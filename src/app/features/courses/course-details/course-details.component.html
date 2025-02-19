@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<main class="bg-gray-900 min-h-screen py-10 flex items-center">
+  <div class="container mx-auto px-4">
+    <div *ngIf="curso; else notFound">
+      <!-- Título do Curso acima de tudo -->
+      <h1 class="text-4xl font-bold text-gray-100 mb-8">
+        {{ curso.titulo }}
+      </h1>
+
+      <!-- Seção com vídeo e informações lado a lado -->
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Vídeo à esquerda -->
+        <div class="md:w-1/2">
+          <video controls class="w-full rounded-lg">
+            <source [src]="curso.videoUrl" type="video/mp4" />
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
+        </div>
+        <!-- Informações do curso à direita -->
+        <div class="md:w-1/2 flex flex-col justify-center">
+          <p class="text-gray-300 mb-6">{{ curso.descricao }}</p>
+          <h2 class="text-2xl font-bold text-gray-100 mb-4">
+            Conteúdo do Curso
+          </h2>
+          <ul class="list-disc list-inside text-gray-300">
+            <li *ngFor="let item of curso.conteudo">{{ item }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <ng-template #notFound>
+      <p class="text-gray-300">Curso não encontrado.</p>
+    </ng-template>
+  </div>
+</main>
+
+<app-footer></app-footer>

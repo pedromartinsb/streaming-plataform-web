@@ -10,14 +10,19 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./features/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
     path: 'home',
     loadChildren: () =>
       import('./features/home/home.module').then((m) => m.HomeModule),
   },
   {
-    path: 'auth',
+    path: 'courses',
     loadChildren: () =>
-      import('./features/auth/auth.module').then((m) => m.AuthModule),
+      import('./features/courses/courses.module').then((m) => m.CoursesModule),
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

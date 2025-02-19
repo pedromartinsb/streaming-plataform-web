@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+<main class="bg-gray-900 min-h-screen py-10">
+  <div class="container mx-auto px-4">
+    <h1 class="text-3xl font-bold text-gray-100 mb-8">Cursos</h1>
+
+    <!-- Filtro por Categoria -->
+    <div class="mb-6">
+      <label for="categoria" class="text-gray-300 mr-2"
+        >Filtrar por Categoria:</label
+      >
+      <select
+        id="categoria"
+        (change)="onCategoriaChange($event)"
+        class="bg-gray-800 text-gray-100 p-2 rounded"
+      >
+        <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+
+    <!-- Lista de Cursos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        *ngFor="let curso of cursosFiltrados"
+        class="bg-gray-800 rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+      >
+        <img
+          [src]="curso.thumbnail"
+          [alt]="curso.titulo"
+          class="w-full h-48 object-cover"
+        />
+        <div class="p-4">
+          <h2 class="text-xl font-semibold text-gray-100 mb-2">
+            {{ curso.titulo }}
+          </h2>
+          <p class="text-gray-300">{{ curso.descricao }}</p>
+          <!-- Exemplo de ação: botão para ver detalhes -->
+          <a
+            routerLink="/courses/detalhes/{{ curso.id }}"
+            class="mt-4 inline-block text-purple-400 hover:underline"
+          >
+            Ver detalhes
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>
