@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingPageModule } from './features/landing-page/landing-page.module';
 import { LayoutModule } from './layout/layout.module';
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,7 @@ import { LayoutModule } from './layout/layout.module';
     LandingPageModule,
     LayoutModule,
   ],
-  providers: [],
+  providers: [provideCharts(withDefaultRegisterables())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
